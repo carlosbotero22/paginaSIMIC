@@ -6,7 +6,52 @@
 <div class="container">
     <div class="header">
         <v-app-bar style="background: linear-gradient(to right, DarkCyan, SteelBlue, DarkCyan);">
-            <v-btn color="white" elevation="4">CONSULTA</v-btn>
+            <v-row>
+                <v-dialog v-model="dialog" persistent max-width="600px">
+                    <template v-slot:activator="{ on, attrs }">
+                        <v-btn @click="dialog = true" elevation="2" color="white" border="1px solid #FDFDFD" dark v-bind="attrs" v-on="on">
+                            Consulta
+                        </v-btn>
+                    </template>
+                    <v-card>
+                        <v-card-title>
+                            <span class="text-h5">INGRESA LOS DATOS DE USUARIO</span>
+                        </v-card-title>
+                        <v-card-text>
+                            <v-container>
+                                <v-row>
+                                    <v-col cols="12" sm="6" md="4">
+                                        <v-text-field label="Nombres:*" required></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12" sm="6" md="4">
+                                        <v-text-field label="Apellidos:" hint="example of helper text only on focus"></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12" sm="6" md="4">
+                                        <v-text-field label="identificación:*" hint="example of persistent helper text" persistent-hint required></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12" sm="6">
+                                        <v-select :items="['0-17', '18-29', '30-54', '54+']" label="Edad*" required></v-select>
+                                    </v-col>
+                                    <v-col cols="12" sm="6">
+                                        <v-autocomplete :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']" label="interés" multiple></v-autocomplete>
+                                    </v-col>
+                                </v-row>
+                            </v-container>
+                            <small>*indicates required field</small>
+                        </v-card-text>
+                        <v-card-actions>
+                            <v-spacer></v-spacer>
+                            <v-btn color="blue darken-1" text @click="dialog = false">
+                                Cerrar
+                            </v-btn>
+                            <v-btn color="blue darken-1" text @click="dialog = false">
+                                Guardar
+                            </v-btn>
+                        </v-card-actions>
+                    </v-card>
+                </v-dialog>
+            </v-row>
+
         </v-app-bar>
 
         <div class="fotos">
@@ -18,8 +63,6 @@
 
     <div class="body">
         <div class="slider">
-            <h2> NOSOTROS </h2>
-
             <div class="slider-track">
                 <div class="slide">
                     <img src="s1.png" alt="" height="100" width="250">
@@ -73,85 +116,20 @@
         </div>
 
         <div class="galeria">
-            <h3> GALERÍA </h3>
-            <div class="fotos">
-                <v-card class="mx-auto" max-width="400">
-                    <v-img class="white--text align-end" height="200px" src="https://i0.wp.com/lagaceta.com.co/wp-content/uploads/2021/03/IMG-20210316-WA0048.jpg?resize=1024%2C683&ssl=1">
-                        <v-card-title>Top 10 Australian beaches</v-card-title>
-                    </v-img>
-
-                    <v-card-subtitle class="pb-0">
-                        Number 10
-                    </v-card-subtitle>
-
-                    <v-card-text class="text--primary">
-                        <div>Whitehaven Beach</div>
-
-                        <div>Whitsunday Island, Whitsunday Islands</div>
-                    </v-card-text>
-
-                    <v-card-actions>
-                        <v-btn color="orange" text>
-                            Share
-                        </v-btn>
-
-                        <v-btn color="orange" text>
-                            Explore
-                        </v-btn>
-                    </v-card-actions>
-                </v-card>
-                <v-card class="mx-auto" max-width="400">
-                    <v-img class="black--text align-end" height="200px" src="https://i0.wp.com/lagaceta.com.co/wp-content/uploads/2021/03/IMG-20210316-WA0048.jpg?resize=1024%2C683&ssl=1">
-                        <v-card-title>Top 10 Australian beaches</v-card-title>
-                    </v-img>
-
-                    <v-card-subtitle class="pb-0">
-                        Number 10
-                    </v-card-subtitle>
-
-                    <v-card-text class="text--primary">
-                        <div>Whitehaven Beach</div>
-
-                        <div>Whitsunday Island, Whitsunday Islands</div>
-                    </v-card-text>
-
-                    <v-card-actions>
-                        <v-btn color="orange" text>
-                            Share
-                        </v-btn>
-
-                        <v-btn color="orange" text>
-                            Explore
-                        </v-btn>
-                    </v-card-actions>
-                </v-card>
-                <v-card class="mx-auto" max-width="400">
-                    <v-img class="white--text align-end" height="200px" src="https://i0.wp.com/lagaceta.com.co/wp-content/uploads/2021/03/IMG-20210316-WA0048.jpg?resize=1024%2C683&ssl=1">
-                        <v-card-title>Top 10 Australian beaches</v-card-title>
-                    </v-img>
-
-                    <v-card-subtitle class="pb-0">
-                        Number 10
-                    </v-card-subtitle>
-
-                    <v-card-text class="text--primary">
-                        <div>Whitehaven Beach</div>
-
-                        <div>Whitsunday Island, Whitsunday Islands</div>
-                    </v-card-text>
-
-                    <v-card-actions>
-                        <v-btn color="orange" text>
-                            Share
-                        </v-btn>
-
-                        <v-btn color="orange" text>
-                            Explore
-                        </v-btn>
-                    </v-card-actions>
-                </v-card>
+            <div class="galeria">
+                <h2 class="subtitulo">Nuestro servicio</h2>
+                <div class="servicios">
+                    <img class="imagen" src="https://img.freepik.com/vector-gratis/gente-moderna-haciendo-actividades-culturales_52683-42205.jpg?t=st=1648584624~exp=1648585224~hmac=88ac542e258d1691aa2f0e884fdaac821951092c29ffe2f36c4bb6ba79dca5ea&w=740" alt="">
+                    <div class="con-servicio">
+                        <div class="sub">
+                            <h2 class="titu">OBJETIVO</h2>
+                            <p class="pa">Promover el desarrollo cultural que involucre todas las manifestaciones culturales y artísticas que hacen parte de nuestra identidad local y regional generando cambios en el comportamiento de los ciudadanos reflejados en la formación de principios y valores y el respeto por lo público.</p>
+                            <h2 class="titu">MISIÓN</h2>
+                            <p class="pa">La Secretaría de Cultura está encargada de fijar la política cultural del Municipio de Neiva y establecer las estrategias que hagan transversalidad y coherencia con las políticas nacionales y departamentales articulando los sectores socioeconómicos del país. Igualmente deberá impulsar las formas de expresión y la defensa del patrimonio cultural del Municipio.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-
         </div>
 
         <div class="geo">
@@ -198,11 +176,13 @@ v-app-bar {
 
 /* *** slide*** */
 .slider {
-    height: 200px;
+    height: 120px;
     margin: auto;
+    margin-top:30px;
     overflow: hidden;
     position: relative;
     width: 60%;
+    
 }
 
 .slider-track {
@@ -211,13 +191,6 @@ v-app-bar {
     width: calc(250px * 7);
 }
 
-h2 {
-    padding: 20px;
-    font-size: 20px;
-    text-align: center;
-    font-family: Tahoma;
-
-}
 
 .slide {
     height: 100px;
@@ -241,27 +214,39 @@ img:hover {
 
 /* *** galeria *** */
 
-.galeria {
-    width: 100%;
-    height: 80%;
-    margin-top: 10px;
-}
-
-.fotos {
-    margin-top: 40px;
-    display: flex;
-    justify-content: center;
-}
-
-v-card:hover {
-    transform: scale(1.2);
-}
-
-h3 {
-    color: black;
-    font-size: 25px;
+.subtitulo {
     text-align: center;
-    font-family: Verdana;
+    font-weight: 300;
+    color: #026167;
+    margin-bottom:40px;
+    font-size: 40px;
+    
+}
+
+.servicios {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.imagen {
+    width: 30%;
+    margin-bottom: 60px;
+}
+
+.pa {
+    color: #026167;
+}
+
+h2 {
+    font-size: 30px;
+    color: #026167;
+}
+
+.con-servicio {
+    width: 40%;
+    margin-bottom: 70px;
 }
 
 /* *** geo *** */
@@ -376,16 +361,17 @@ h3 {
     animation-delay: 3s;
 }
 
-@keyframes burbujas{
-    0%{
-        bottom:0;
-        opacity:0;
+@keyframes burbujas {
+    0% {
+        bottom: 0;
+        opacity: 0;
     }
-    30%{
+
+    30% {
         transform: translateX(30px);
     }
 
-    100%{
+    100% {
         bottom: 100vh;
     }
 }
@@ -487,6 +473,7 @@ export default {
 
         return {
             show: false,
+            dialog: false,
             items: [{
                     src: 'p1.jpg',
                 },
