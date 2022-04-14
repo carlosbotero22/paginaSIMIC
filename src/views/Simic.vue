@@ -196,6 +196,7 @@ v-app-bar {
     height: 100px;
     width: 250px;
     perspective: 130px;
+    
 }
 
 img:hover {
@@ -228,6 +229,14 @@ img:hover {
     justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
+}
+
+.sub {
+    text-align:center;
+}
+
+.titu {
+    padding:10px;
 }
 
 .imagen {
